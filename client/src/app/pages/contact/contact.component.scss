@@ -1,0 +1,174 @@
+/* --- HERO SECTION STYLES (Fixed Height Issue) --- */
+.home-slider {
+    position: relative;
+    height: 500px !important; /* Matches content height */
+    margin-bottom: 0 !important;
+    z-index: 0;
+    width: 100%;
+    display: block;
+
+    .slider-item {
+        height: 500px !important;
+        position: relative;
+         background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        z-index: 0;
+
+        /* Dark Overlay */
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: #000;
+            opacity: 0.6;
+            z-index: 1;
+        }
+
+        /* Text Centering */
+        .slider-text {
+            height: 500px !important;
+            z-index: 2;
+            position: relative;
+
+            h1.bread {
+                font-weight: 800;
+                color: #fff;
+                font-size: 30px;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                margin-top: 50px;
+                
+                @media (min-width: 768px) {
+                    font-size: 50px;
+                }
+            }
+
+            .breadcrumbs {
+                text-transform: uppercase;
+                font-size: 13px;
+                letter-spacing: 1px;
+                margin-bottom: 0;
+                z-index: 1;
+                
+                span {
+                    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+                    color: rgba(255, 255, 255, 0.7);
+                    
+                    a {
+                        color: #fff;
+                        text-decoration: none;
+                        &:hover { color: #c49b63; }
+                    }
+                    
+                    &:first-child {
+                        padding-right: 5px;
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* --- CONTACT SECTION STYLES --- */
+.contact-section {
+    padding: 4em 0 7em 0;
+    background: #000; /* Dark Background */
+    position: relative;
+    z-index: 1;
+}
+
+.contact-info {
+    h2 {
+        color: #fff;
+        font-weight: 700;
+        margin-bottom: 30px;
+    }
+    p {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 16px;
+        line-height: 1.8;
+        
+        span {
+            color: #fff;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        a {
+            color: #c49b63; /* Gold Links */
+            text-decoration: none;
+        }
+    }
+}
+
+.contact-form {
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        background: transparent !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        color: #fff !important;
+        font-size: 14px;
+        height: 52px;
+        border-radius: 0;
+        padding-left: 20px;
+
+        &:focus {
+            border-color: #c49b63 !important;
+        }
+        
+        &::placeholder {
+            color: rgba(255, 255, 255, 0.5) !important;
+        }
+    }
+
+    textarea.form-control {
+        height: auto !important;
+        padding-top: 15px;
+    }
+
+    .btn-primary {
+        background: #c49b63 !important;
+        border: 1px solid #c49b63 !important;
+        color: #000 !important;
+        border-radius: 0;
+        cursor: pointer;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        
+        &:hover {
+            background: #fff !important;
+            border-color: #fff !important;
+            color: #000 !important;
+        }
+
+        &:disabled {
+            background: #333 !important;
+            border-color: #333 !important;
+            color: #777 !important;
+            cursor: not-allowed;
+        }
+    }
+}
+
+/* --- MAP SECTION STYLES --- */
+.map-section {
+    width: 100%;
+    margin-bottom: 0;
+    line-height: 0; /* Removes gap */
+    
+    iframe {
+        display: block;
+        width: 100%;
+        filter: grayscale(100%); /* Black and White Map */
+        
+        &:hover {
+            filter: none; /* Color on hover */
+            transition: all 0.3s ease;
+        }
+    }
+}

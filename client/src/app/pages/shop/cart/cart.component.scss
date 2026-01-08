@@ -1,0 +1,401 @@
+/* --- VARIABLES --- */
+$primary: #c49b63; /* Gold */
+$white: #ffffff;
+$black: #000000;
+$dark-grey: #1a1a1a;
+
+
+/* --- HERO SECTION STYLES --- */
+.home-slider {
+    position: relative;
+    height: 500px !important;
+    margin-bottom: 0 !important;
+    z-index: 0;
+    width: 100%;
+    display: block;
+
+    .slider-item {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        height: 500px !important;
+        position: relative;
+        z-index: 0;
+
+        /* Dark Overlay */
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: #000;
+            opacity: 0.6; /* Adjust darkness here */
+            z-index: 1;
+        }
+
+        /* Text Centering */
+        .slider-text {
+            height: 500px !important;
+            z-index: 2;
+            position: relative;
+
+            h1.bread {
+                font-weight: 800;
+                color: #fff;
+                font-size: 30px;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                margin-top: 50px; /* Offset for navbar */
+                
+                @media (min-width: 768px) {
+                    font-size: 50px;
+                }
+            }
+
+            /* Breadcrumb Links */
+            .breadcrumbs {
+                text-transform: uppercase;
+                font-size: 13px;
+                letter-spacing: 1px;
+                margin-bottom: 0;
+                z-index: 1;
+                
+                span {
+                    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+                    color: rgba(255, 255, 255, 0.7);
+                    
+                    a {
+                        color: #fff;
+                        text-decoration: none;
+                        &:hover { color: #c49b63; } /* Gold hover */
+                    }
+                    
+                    &:first-child {
+                        padding-right: 5px;
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* ... your existing variables and table styles below ... */
+/* --- MAIN SECTION --- */
+.ftco-cart {
+    background: $black;
+    padding: 2em 0 6em 0 !important; /* Change top padding to 2em */
+    width: 100%;
+    
+    /* Ensure the container takes full width if needed */
+    .container {
+        max-width: 1140px;
+    }
+}
+
+/* --- THE CART TABLE --- */
+.cart-list {
+    overflow-x: auto; /* Adds scrollbar on mobile if table is too wide */
+}
+
+.table {
+    min-width: 1000px !important; /* Forces layout to stay wide (standard for this theme) */
+    width: 100%;
+    background: transparent !important; /* CRITICAL FIX: Removes white background */
+    margin-bottom: 0;
+
+    thead {
+        &.thead-primary {
+            background: $primary;
+            border-radius: 4px;
+        }
+
+        tr th {
+            padding: 20px 10px;
+            font-size: 16px;
+            font-weight: 500;
+            color: $white;
+            border: none !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: $primary; /* Ensure header stays gold */
+        }
+    }
+
+    tbody {
+        tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Very subtle separator */
+            
+            td {
+                background: transparent !important; /* CRITICAL FIX: Removes white background */
+                vertical-align: middle;
+                padding: 40px 10px;
+                border: none !important;
+                color: gray;
+
+                /* 1. CLOSE BUTTON (X) */
+                &.product-remove {
+                    a {
+                        border: 1px solid rgba(255, 255, 255, 0.1);
+                        padding: 5px 10px;
+                        color: $white;
+                        cursor: pointer;
+                        transition: 0.3s;
+                        
+                        &:hover {
+                            background: $primary;
+                            border-color: $primary;
+                            color: $white;
+                        }
+                        
+                        span {
+                            font-size: 16px; 
+                        }
+                    }
+                }
+
+                /* 2. PRODUCT IMAGE */
+                &.image-prod {
+                    .img {
+                        display: block;
+                        width: 100px;
+                        height: 100px;
+                        background-size: cover;
+                        background-position: center;
+                        margin: 0 auto;
+                        border-radius: 4px;
+                    }
+                }
+
+                /* 3. PRODUCT NAME & DESC */
+                &.product-name {
+                    width: 30%;
+                    h3 {
+                        font-size: 18px;
+                        text-transform: uppercase;
+                        color: $white;
+                        margin-bottom: 5px;
+                        font-weight: 500;
+                    }
+                    p {
+                        font-size: 14px;
+                        color: rgba(255, 255, 255, 0.6);
+                        margin-bottom: 0;
+                    }
+                }
+
+                /* 4. PRICE */
+                &.price {
+                    color: $white;
+                }
+
+                /* 5. QUANTITY INPUT */
+                &.quantity {
+                    .input-group {
+                        width: 100px; /* Specific width for input box */
+                        margin: 0 auto;
+                        
+                        input {
+                            background: transparent !important;
+                            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                            color: $white !important;
+                            text-align: center;
+                            height: 40px !important;
+                            border-radius: 0;
+                            
+                            &:focus {
+                                outline: none;
+                                border-color: $primary !important;
+                            }
+                        }
+                    }
+                }
+
+                /* 6. TOTAL */
+                &.total {
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+/* --- EMPTY CART MESSAGE --- */
+/* This specifically styles the "Go to Menu" box you saw */
+tr td[colspan="6"] {
+    padding: 5em 0 !important;
+    
+    h3 {
+        color: rgba(255,255,255,0.9);
+        font-weight: 300;
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+}
+
+/* --- CART TOTALS BOX (Bottom Right) --- */
+.cart-wrap {
+    .cart-total {
+        width: 100%;
+        display: block;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        margin-bottom: 30px;
+        
+        h3 {
+            font-size: 20px;
+            color: $white;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        p {
+            display: flex;
+            justify-content: space-between;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 15px;
+            
+            span:last-child {
+                color: $white;
+                font-weight: 400;
+            }
+        }
+
+        hr {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* The Final Total Amount */
+        .total-price {
+            span:last-child {
+                color: $primary;
+                font-size: 20px;
+                font-weight: 700;
+            }
+        }
+    }
+    
+    /* Checkout Button */
+    .btn-primary {
+        background: $primary !important;
+        border: 1px solid $primary !important;
+        color: $black !important;
+        border-radius: 0;
+        width: 100%;
+        font-weight: 600;
+        
+        &:hover {
+            background: transparent !important;
+            color: $primary !important;
+        }
+    }
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+    .ftco-cart {
+        padding: 5em 0 !important; /* Reduce large padding on mobile */
+    }
+
+    .table {
+        min-width: 700px !important; /* Allow the user to scroll the table sideways */
+    }
+    
+    .cart-wrap {
+        margin-top: 20px !important;
+        padding: 0 15px; /* Prevent total box from hitting screen edges */
+    }
+}
+/* =========================================
+   RELATED PRODUCTS SECTION
+   ========================================= */
+
+.ftco-section1 {
+    padding: 6em 0;
+    padding-top: 1em;
+    background-color: #000; /* Dark Background */
+}
+
+/* 1. Header Styling */
+.heading-section {
+    .subheading {
+        font-family: 'Great Vibes', cursive;
+        font-size: 30px;
+        color: #c49b63; /* Gold */
+        display: block;
+        margin-bottom: 5px;
+    }
+    h2 {
+        color: #fff;
+        font-size: 30px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    p {
+        color: gray;
+        line-height: 1.8;
+    }
+}
+
+/* 2. Product Card Styling */
+.menu-entry {
+    margin-bottom: 30px;
+    
+    .img {
+        display: block;
+        height: 200px;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+        margin-bottom: 20px;
+    }
+
+    .text {
+        h3 {
+            font-size: 16px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 10px;
+            
+            a {
+                color: #fff;
+                text-decoration: none;
+                transition: 0.3s;
+                &:hover { color: #c49b63; }
+            }
+        }
+
+        p {
+            color: gray;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .price span {
+            color: #c49b63; /* Gold Price */
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* 3. The Button */
+        .btn-outline-primary {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: transparent;
+            color: #fff;
+            border-radius: 0;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px 15px;
+            transition: 0.3s;
+
+            &:hover {
+                background: #c49b63;
+                border-color: #c49b63;
+                color: #fff;
+            }
+        }
+    }
+}

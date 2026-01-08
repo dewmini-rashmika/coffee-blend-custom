@@ -1,0 +1,326 @@
+/* --- HERO SECTION --- */
+.home-slider {
+    position: relative;
+    height: 500px !important;
+    margin-bottom: 0 !important;
+    z-index: 0;
+    width: 100%;
+    display: block;
+
+    .slider-item {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        height: 500px !important;
+        position: relative;
+        z-index: 0;
+
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: #000;
+            opacity: 0.6;
+            z-index: 1;
+        }
+
+        .slider-text {
+            height: 500px !important;
+            z-index: 2;
+            position: relative;
+
+            h1.bread {
+                font-weight: 800;
+                color: #fff;
+                font-size: 30px;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                margin-top: 50px;
+            }
+
+            .breadcrumbs span {
+                color: rgba(255,255,255,0.7);
+                a { color: #fff; text-decoration: none; &:hover { color: #c49b63; } }
+            }
+        }
+    }
+}
+
+/* --- OUR STORY (Split Screen) --- */
+.ftco-about {
+    .one-half {
+        width: 100%;
+        padding: 4em;
+        background: #000; /* Ensures the text side is black */
+        
+        &.img {
+            background-size: cover;
+            background-position: center center;
+            min-height: 500px; /* Force height so image shows */
+        }
+        
+        @media (min-width: 768px) {
+            width: 50%;
+        }
+    }
+
+    .heading-section {
+        margin-bottom: 30px;
+        .subheading {
+            font-family: 'Great Vibes', cursive;
+            font-size: 30px;
+            color: #c49b63;
+        }
+        h2 {
+            color: #fff;
+            font-size: 40px;
+            text-transform: uppercase;
+        }
+    }
+    p { color: rgba(255,255,255,0.7); line-height: 1.8; }
+}
+
+/* --- ANIMATED COUNTERS --- */
+/* --- ANIMATED COUNTERS SECTION --- */
+/* --- ANIMATED COUNTERS SECTION --- */
+.ftco-counter {
+    padding: 7em 0;
+    position: relative;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    z-index: 0;
+
+    /* 1. VISIBILITY FIX: Make background image darker so text pops */
+    .overlay {
+        position: absolute;
+        top: 0; bottom: 0; left: 0; right: 0;
+        /* 0.8 makes the photo quite dark (low opacity), 
+           so the gold icons stand out clearly */
+        background: rgba(0, 0, 0, 0.8) !important; 
+        z-index: 1;
+    }
+
+    .container {
+        position: relative;
+        z-index: 2; /* Ensures content sits on top of overlay */
+    }
+
+    .block-18 {
+        display: block;
+        width: 100%;
+        margin-bottom: 30px;
+        cursor: pointer;
+        
+        /* 2. ICON SIZE FIX: Forced bigger size */
+        .icon {
+            width: 90px !important;    /* Force Box Width */
+            height: 90px !important;   /* Force Box Height */
+            margin: 0 auto 20px auto;
+            border: 2px solid #c49b63 !important; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+            background: transparent;
+            
+            span {
+                font-size: 50px !important; /* Force Icon Size */
+                color: #c49b63 !important;
+                transition: all 0.4s ease;
+            }
+        }
+
+        /* 3. HOVER EFFECT: Rotate Box & Fill Gold */
+        &:hover {
+            .icon {
+                /* Rotates the square 45 degrees to make a diamond */
+                transform: rotate(45deg) !important; 
+                background: #c49b63 !important;      
+                border-color: #c49b63 !important;
+                
+                /* Counter-rotate the icon so it stays upright */
+                span {
+                    transform: rotate(-45deg) !important; 
+                    color: #000 !important; /* Icon turns black */
+                }
+            }
+        }
+
+        .text {
+            strong.number {
+                font-weight: 700;
+                font-size: 40px !important;
+                color: #c49b63 !important;
+                display: block;
+            }
+            span {
+                display: block;
+                font-size: 16px;
+                color: #fff !important; /* Pure White Text */
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-weight: 500;
+            }
+        }
+    }
+}
+/* --- TESTIMONIALS (Gold Boxes) --- */
+.testimony-section {
+    position: relative;
+    padding: 7em 0;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+    
+    .overlay {
+        background: rgba(0,0,0,0.85); /* Very Dark overlay */
+        position: absolute;
+        top:0; left:0; right:0; bottom:0;
+    }
+
+    .heading-section {
+        position: relative;
+        z-index: 2;
+        .subheading { color: #c49b63; font-family: 'Great Vibes', cursive; font-size: 30px;}
+        h2 { color: #fff; text-transform: uppercase; }
+        p { color: rgba(255,255,255,0.7); }
+    }
+
+    /* THE GOLD BOX STYLE */
+    .testimony-item {
+        position: relative;
+        z-index: 2;
+        
+        .box {
+            background: #c49b63; /* Gold Background */
+            padding: 30px;
+            position: relative;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            
+            p {
+                color: #fff; /* White Text inside gold box */
+                font-style: italic;
+                margin: 0;
+                line-height: 1.6;
+            }
+
+            /* Small triangle arrow at bottom of box */
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 30px;
+                width: 0;
+                height: 0;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-top: 10px solid #c49b63;
+            }
+        }
+        
+        .user-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .name {
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 0;
+            font-size: 18px;
+        }
+        .position {
+            font-size: 13px;
+            color: #c49b63;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    }
+}
+/* --- MENU SECTION STYLES --- */
+.heading-section {
+    .subheading {
+        font-family: 'Great Vibes', cursive;
+        font-size: 30px;
+        color: #c49b63; /* Gold Script Font */
+        display: block;
+        margin-bottom: 0;
+    }
+    h2 {
+        font-size: 40px;
+        font-weight: 700;
+        color: #fff;
+        text-transform: uppercase;
+    }
+    p {
+        color: rgba(255, 255, 255, 0.7);
+    }
+}
+
+/* Button: View Full Menu */
+.btn-outline-primary {
+    border: 1px solid #c49b63 !important;
+    color: #fff !important;
+    background: transparent;
+    border-radius: 0;
+    
+    &:hover {
+        background: #c49b63 !important;
+        border-color: #c49b63 !important;
+        color: #000 !important; /* Text turns black on hover */
+    }
+}
+
+/* --- Move Entire Section Down --- */
+.menu-section-padding {
+    padding-top: 5em !important; /* Adjust this value to move it further down */
+    padding-bottom: 5em !important;
+    padding-left: 0 !important;
+    margin-left: 0;
+}
+
+/* --- Menu Grid Images (Perfect Square Grid) --- */
+.menu-entry {
+    margin-bottom: 30px;
+    
+    .img {
+        display: block;
+        height: 250px; /* Fixed height for perfect alignment */
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+        border-radius: 4px;
+    }
+}
+
+/* --- Text Alignment Fix --- */
+.heading-section {
+    text-align: left !important; /* Force Left Alignment */
+    .subheading {
+        font-family: 'Great Vibes', cursive;
+        font-size: 30px;
+        color: #c49b63;
+        display: block;
+        margin-bottom: 0;
+    }
+    h2 {
+        font-size: 40px;
+        font-weight: 700;
+        color: #fff;
+        text-transform: uppercase;
+    }
+    p {
+        color: rgba(255, 255, 255, 0.7);
+    }
+}
+/* Fix for spacing on large screens to create the staggered grid look */
+@media (min-width: 992px) {
+    .mt-lg-4 {
+        margin-top: 1.5rem !important;
+    }
+}

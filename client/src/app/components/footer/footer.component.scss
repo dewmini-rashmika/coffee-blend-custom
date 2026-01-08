@@ -1,0 +1,55 @@
+/* =========================================
+   FOOTER BLOG SPACING FIX
+   ========================================= */
+
+.ftco-footer .block-21 {
+    display: flex;       /* Ensures side-by-side layout */
+    align-items: flex-start;
+    margin-bottom: 20px;
+
+    /* 1. The Image Box */
+    .blog-img {
+        width: 80px;
+        height: 80px;
+        border-radius: 4px;
+        background-size: cover;
+        background-position: center;
+        flex-shrink: 0;  /* Prevents image from getting squashed */
+        display: block;
+        
+        /* THIS ADDS THE SPACE */
+        margin-right: 20px !important; 
+    }
+
+    /* 2. The Text Area */
+    .text {
+        width: calc(100% - 100px); /* Fill remaining space */
+        
+        .heading a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 400;
+            transition: 0.3s;
+            
+            &:hover { color: #c49b63; }
+        }
+        
+        .meta div {
+            display: inline-block;
+            margin-right: 10px;
+            a { color: gray; }
+        }
+    }
+}
+/* Services Links Fix */
+.list-unstyled li a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none !important; /* <--- REMOVES UNDERLINE */
+    transition: 0.3s;
+    
+    &:hover {
+        color: #c49b63 !important; 
+        padding-left: 5px; 
+        text-decoration: none !important; /* Ensures it stays off on hover */
+    }
+}

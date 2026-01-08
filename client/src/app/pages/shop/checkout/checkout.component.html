@@ -1,0 +1,245 @@
+
+<section class="home-slider owl-carousel">
+    <div class="slider-item" style="background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row slider-text justify-content-center align-items-center">
+          <div class="col-md-7 col-sm-12 text-center ftco-animate">
+              <h1 class="mb-3 mt-5 bread">Checkout</h1>
+              <p class="breadcrumbs">
+                  <span class="mr-2"><a routerLink="/checkout">Checkout</a></span> 
+                  <span><a routerLink="/contact">Contact</a></span>
+              </p>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-xl-8 ftco-animate">
+                
+                <form #checkoutForm="ngForm" class="billing-form ftco-bg-dark p-3 p-md-5">
+                    <h3 class="mb-4 billing-heading">Billing Details</h3>
+                    
+                    <div class="row align-items-end">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>First Name *</label>
+                                <input type="text" class="form-control" [(ngModel)]="model.firstname" name="firstname" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Last Name *</label>
+                                <input type="text" class="form-control" [(ngModel)]="model.lastname" name="lastname" required>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>State / Country *</label>
+                                <div class="select-wrap">
+                                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                    <select name="country" class="form-control" [(ngModel)]="model.country" required>
+                                        <option value="France">France</option>
+                                        <option value="Japan">Japan</option>
+                                        <option value="USA">USA</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Street Address *</label>
+                                <input type="text" class="form-control" [(ngModel)]="model.street" name="street" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Town / City *</label>
+                                <input type="text" class="form-control" [(ngModel)]="model.city" name="city" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Postcode / ZIP *</label>
+                                <input type="text" class="form-control" [(ngModel)]="model.postcode" name="postcode" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Phone *</label>
+                                <input type="text" class="form-control" [(ngModel)]="model.phone" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Email Address *</label>
+                                <input type="text" class="form-control" [(ngModel)]="model.email" name="email" required email>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group mt-4">
+                                <div class="radio">
+                                    
+                                    <label style="margin-right: 40px; cursor: pointer; color: #fff;">
+                                        <input type="checkbox" name="createAccount" [(ngModel)]="model.createAccount"> Create an Account? 
+                                    </label>
+                                    
+                                    <label style="cursor: pointer; color: #fff;">
+                                        <input type="checkbox" name="shipDifferent" [(ngModel)]="model.shipDifferent"> Ship to different address
+                                    </label>
+
+                                    <div *ngIf="model.createAccount" class="mt-3">
+                                        <button type="button" (click)="registerAccount()" class="btn btn-primary py-2 px-3" style="font-size: 13px; background-color: #c49b63; border: none; color: #000;">
+                                            Save Account Now
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div *ngIf="model.shipDifferent" class="shipping-info mt-4 pt-4 border-top" style="border-color: rgba(255,255,255,0.1) !important;">
+                        <h3 class="mb-4 billing-heading">Shipping Address</h3>
+                        <div class="row align-items-end">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Shipping First Name *</label>
+                                    <input type="text" class="form-control" [(ngModel)]="shippingModel.firstname" name="s_firstname" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Shipping Last Name *</label>
+                                    <input type="text" class="form-control" [(ngModel)]="shippingModel.lastname" name="s_lastname" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Shipping Street Address *</label>
+                                    <input type="text" class="form-control" [(ngModel)]="shippingModel.street" name="s_street" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Shipping City *</label>
+                                    <input type="text" class="form-control" [(ngModel)]="shippingModel.city" name="s_city" required>
+                                </div>
+                            </div>
+                             <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Shipping Zip *</label>
+                                    <input type="text" class="form-control" [(ngModel)]="shippingModel.postcode" name="s_postcode" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 mt-3">
+                                <button type="button" (click)="saveShippingDetails()" class="btn btn-primary py-2 px-3" style="font-size: 13px; background-color: #c49b63; border: none; color: #000;">
+                                    Save Shipping Details
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </form>
+
+
+                <div class="row mt-3 pt-3 d-flex gutter-fix">
+                    
+                    <div class="col-md-6 d-flex">
+                        <div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4">
+                            <h3 class="billing-heading mb-4">Cart Total</h3>
+                            <p class="d-flex"><span>Subtotal</span> <span>${{ cartTotals.subTotal | number:'1.2-2' }}</span></p>
+                            <p class="d-flex"><span>Delivery</span> <span>${{ cartTotals.delivery | number:'1.2-2' }}</span></p>
+                            <p class="d-flex"><span>Discount</span> <span>${{ cartTotals.discount | number:'1.2-2' }}</span></p>
+                            <hr>
+                            <p class="d-flex total-price"><span>Total</span> <span>${{ cartTotals.grandTotal | number:'1.2-2' }}</span></p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="cart-detail ftco-bg-dark p-3 p-md-4">
+                            <h3 class="billing-heading mb-4">Payment Method</h3>
+                            
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="radio"><label><input type="radio" name="payment" class="mr-2" required> Direct Bank Tranfer</label></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="radio"><label><input type="radio" name="payment" class="mr-2" required> Check Payment</label></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="radio"><label><input type="radio" name="payment" class="mr-2" required> Paypal</label></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="checkbox"><label><input type="checkbox" value="" class="mr-2" required> I have read and accept the terms</label></div>
+                                </div>
+                            </div>
+                            
+                            <p style="margin-top: 30px;">
+                                <button (click)="placeOrder(checkoutForm)" 
+                                        [disabled]="!checkoutForm.valid" 
+                                        [class.disabled-btn]="!checkoutForm.valid"
+                                        class="btn btn-primary py-3 px-4">
+                                    Place an order
+                                </button>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div> 
+            <div class="col-xl-4 sidebar ftco-animate">
+    
+    <div class="sidebar-box">
+        <form (submit)="searchCategory(searchInput.value)" class="search-form">
+            <div class="form-group">
+                <div class="icon"><span class="icon-search"></span></div>
+                <input #searchInput type="text" class="form-control" placeholder="Search (e.g. Starter)...">
+            </div>
+        </form>
+    </div>
+
+    <div class="sidebar-box ftco-animate">
+        <div class="categories">
+            <h3>Categories</h3> <li *ngFor="let cat of categories">
+                <a (click)="searchCategory(cat.name)" style="cursor: pointer;">
+                    {{ cat.name }} <span>({{ cat.count }})</span>
+                </a>
+            </li>
+        </div>
+    </div>
+
+    <div class="sidebar-box ftco-animate">
+        <h3>Recent Blog</h3>
+        <div class="block-21 mb-4 d-flex" *ngFor="let post of recentPosts">
+            <a class="blog-img mr-4" [style.backgroundImage]="'url(' + post.image + ')'"></a>
+            <div class="text">
+                <h3 class="heading"><a href="#">{{ post.title }}</a></h3>
+                <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span> {{ post.date }}</a></div>
+                    <div><a href="#"><span class="icon-person"></span> {{ post.author }}</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+            
+        </div>
+    </div>
+</section>

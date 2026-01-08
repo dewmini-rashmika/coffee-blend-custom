@@ -1,0 +1,53 @@
+<section class="home-slider owl-carousel">
+    <div class="slider-item" style="background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row slider-text justify-content-center align-items-center">
+          <div class="col-md-7 col-sm-12 text-center ftco-animate">
+              <h1 class="mb-3 mt-5 bread">Order Online</h1>
+              <p class="breadcrumbs">
+                  <span style="margin-right: 20px;"><a routerLink="/shop">Shop</a></span> 
+                  <span><a routerLink="/shop/product/:id">Single Product</a></span>
+              </p>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="ftco-menu">
+    <div class="container">
+        
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 text-center">
+                <div class="category-tabs">
+                    <button class="btn btn-tab" [class.active]="activeCategory === 'Coffee'" (click)="setCategory('Coffee')">Coffee</button>
+                    <button class="btn btn-tab" [class.active]="activeCategory === 'Main Dish'" (click)="setCategory('Main Dish')">Main Dish</button>
+                    <button class="btn btn-tab" [class.active]="activeCategory === 'Drinks'" (click)="setCategory('Drinks')">Drinks</button>
+                    <button class="btn btn-tab" [class.active]="activeCategory === 'Desserts'" (click)="setCategory('Desserts')">Desserts</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row d-flex align-items-stretch">
+            <div class="col-md-3 text-center ftco-animate" *ngFor="let item of filteredProducts">
+                <div class="menu-wrap">
+                    <a href="javascript:void(0)" class="menu-img img mb-4" [style.backgroundImage]="'url(' + item.image + ')'"></a>
+                    
+                    <div class="text">
+                        <h3><a href="javascript:void(0)">{{ item.name }}</a></h3>
+                        <p>{{ item.description }}</p>
+                        <p class="price"><span>${{ item.price }}</span></p>
+                        
+                        <p>
+                            <button (click)="addToCart(item)" class="btn btn-primary btn-outline-primary" style="cursor: pointer;">
+                                Add to Cart
+                            </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

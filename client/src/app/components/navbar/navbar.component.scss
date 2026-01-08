@@ -1,0 +1,57 @@
+/* navbar.component.scss */
+
+/* Force menu to show when Angular adds the class */
+.navbar-collapse.show {
+    display: block !important;
+}
+
+/* Optional: Add a transition for smooth opening if desired */
+.navbar-collapse {
+    transition: height 0.3s ease;
+}
+.cart {
+    position: relative;
+    
+    .cart-img {
+        width: 25px;
+        height: 25px;
+        object-fit: cover;
+        vertical-align: middle;
+    }
+
+    .bag {
+        position: absolute;
+        top: 0;
+        right: -5px;
+        width: 18px;
+        height: 18px;
+        background: #c49b63; // Theme Gold
+        border-radius: 50%;
+        color: #000; // Black text for the number
+        
+        small {
+            font-size: 10px;
+            font-weight: 700;
+            line-height: 1;
+        }
+    }
+}
+/* Existing styles... */
+
+/* --- NEW CODE START --- */
+#ftco-navbar {
+    position: fixed;  /* Locks the element to the viewport */
+    top: 0;           /* Sticks it to the very top */
+    left: 0;
+    width: 100%;      /* Ensures it spans the full width */
+    z-index: 1030;    /* Ensures it floats above other content (Bootstrap standard) */
+    
+    /* Optional: Add a shadow so it stands out from content scrolling under it */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+}
+/* --- NEW CODE END --- */
+
+.navbar-collapse.show {
+    display: block !important;
+}
+/* ... rest of your existing cart styles */

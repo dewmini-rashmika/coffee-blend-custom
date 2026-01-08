@@ -1,0 +1,485 @@
+<section class="home-slider">
+  <div class="carousel slide">
+    
+    <ol class="carousel-indicators">
+      <li (click)="currentSlide = 0" [class.active]="currentSlide === 0"></li>
+      <li (click)="currentSlide = 1" [class.active]="currentSlide === 1"></li>
+    </ol>
+
+    <div class="carousel-inner">
+      
+      <div class="carousel-item" 
+           [class.active]="currentSlide === 0"
+           style="background-image: url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1956&q=80');">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center">
+            <div class="col-md-8 text-center">
+              <span class="subheading">Welcome</span>
+              <h1 class="mb-4">The Best Coffee Testing Experience</h1>
+              <p>
+                <a routerLink="/shop" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> 
+                <a routerLink="/menu" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item" 
+           [class.active]="currentSlide === 1"
+           style="background-image: url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1956&q=80');">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center">
+            <div class="col-md-8 text-center">
+              <span class="subheading">Welcome</span>
+              <h1 class="mb-4">Amazing Taste &amp; Beautiful Place</h1>
+              <p>
+                <a routerLink="/shop" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> 
+                <a routerLink="/menu" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section class="ftco-intro">
+  <div class="container-fluid px-0">
+    <div class="row no-gutters">
+      
+      <div class="col-md-12 col-lg-7 d-flex align-items-center">
+         <div class="contact-wrap w-100">
+            <div class="row">
+                <div class="col-md-4 d-flex align-items-start mb-4 mb-md-0">
+                    <div class="icon mr-3">
+                        <span class="icon-phone" style="color: #c49b63; font-size: 20px;">📞</span>
+                    </div>
+                    <div class="text">
+                        <h4 class="mb-2 text-white" style="font-size: 16px; font-weight: 700;">000 (123) 456 7890</h4>
+                        <p class="mb-0 text-white" style="font-size: 13px; opacity: 0.7;">A small river named Duden flows by their place and supplies.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 d-flex align-items-start mb-4 mb-md-0">
+                    <div class="icon mr-3">
+                        <span class="icon-map-marker" style="color: #c49b63; font-size: 20px;">📍</span>
+                    </div>
+                    <div class="text">
+                        <h4 class="mb-2 text-white" style="font-size: 16px; font-weight: 700;">198 West 21th Street</h4>
+                        <p class="mb-0 text-white" style="font-size: 13px; opacity: 0.7;">203 Fake St. Mountain View, San Francisco, California, USA</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 d-flex align-items-start mb-4 mb-md-0">
+                    <div class="icon mr-3">
+                        <span class="icon-clock-o" style="color: #c49b63; font-size: 20px;">🕒</span>
+                    </div>
+                    <div class="text">
+                        <h4 class="mb-2 text-white" style="font-size: 16px; font-weight: 700;">Open Monday-Friday</h4>
+                        <p class="mb-0 text-white" style="font-size: 13px; opacity: 0.7;">8:00am - 9:00pm</p>
+                    </div>
+                </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="col-md-12 col-lg-5">
+        <div class="wrap-about">
+            <div class="heading-section mb-4">
+                <h2 class="mb-4 text-white" style="font-size: 24px; text-transform: uppercase;">Book a Table</h2>
+            </div>
+            
+            <form (ngSubmit)="bookTable()" class="appointment-form">
+                <div class="d-md-flex">
+                    <div class="form-group" style="width: 50%; padding-right: 15px;">
+                        <input type="text" class="form-control" name="name" placeholder="First Name" [(ngModel)]="model.name">
+                    </div>
+                    <div class="form-group" style="width: 50%; padding-left: 15px;">
+                        <input type="text" class="form-control" name="lastname" placeholder="Last Name" [(ngModel)]="model.lastname">
+                    </div>
+                </div>
+
+                <div class="d-md-flex mt-3">
+                    <div class="form-group" style="width: 33%; padding-right: 10px;">
+                        <input type="date" class="form-control" name="date" [(ngModel)]="model.date">
+                    </div>
+                    <div class="form-group" style="width: 33%; padding-left: 10px; padding-right: 10px;">
+                        <input type="time" class="form-control" name="time" [(ngModel)]="model.time">
+                    </div>
+                    <div class="form-group" style="width: 33%; padding-left: 10px;">
+                        <input type="text" class="form-control" name="phone" placeholder="Phone" [(ngModel)]="model.phone">
+                    </div>
+                </div>
+
+                <div class="form-group mt-3">
+                        <textarea class="form-control" name="message" cols="30" rows="3" placeholder="Message" [(ngModel)]="model.message"></textarea>
+                </div>
+
+                <div class="form-group mt-4">
+                    <input type="submit" value="Appointment" class="btn btn-white py-3 px-4">
+                </div>
+            </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section class="ftco-about d-md-flex">
+    <div class="img-about" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+    <div class="one-half d-flex align-items-center">
+        <div class="overlap">
+            <div class="heading-section">
+                <span class="subheading">Discover</span>
+                <h2 class="mb-4">Our Story</h2>
+            </div>
+            <div>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ftco-section img" id="ftco-testimony" style="background-image: url('assets/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+
+    
+    <div class="container-wrap">
+        <div class="row d-flex align-items-center">
+            
+            <div class="col-md-6 mb-4 mb-md-0">
+                <div class="text p-4 p-md-5 text-center text-md-left">
+                    <span class="subheading" style="font-family: 'Great Vibes', cursive; font-size: 40px; color: #c49b63;">Discover</span>
+                    <h2 class="mb-4" style="color: #fff; font-size: 40px; font-weight: 800; text-transform: uppercase;">Our Menu</h2>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 30px;">
+                        Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
+                    </p>
+                    <a routerLink="/menu" class="btn btn-white btn-outline-white px-4 py-3">View Full Menu</a>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=500&q=80" class="img-fluid rounded" alt="Coffee 1" style="height: 250px; width: 100%; object-fit: cover;">
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=500&q=80" class="img-fluid rounded" alt="Coffee 2" style="height: 250px; width: 100%; object-fit: cover;">
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500&q=80" class="img-fluid rounded" alt="Coffee 3" style="height: 250px; width: 100%; object-fit: cover;">
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?w=500&q=80" class="img-fluid rounded" alt="Coffee 4" style="height: 250px; width: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section">
+ <section class="ftco-counter ftco-bg-dark img" id="section-counter" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <div class="row">
+            
+            <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+              <div class="block-18 text-center">
+                <div class="text">
+                  <div class="icon"><span class="flaticon-coffee-cup">☕</span></div>
+                  <strong class="number" data-number="100">100</strong>
+                  <span>Coffee Branches</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+              <div class="block-18 text-center">
+                <div class="text">
+                  <div class="icon"><span class="flaticon-coffee-cup">🏅</span></div>
+                  <strong class="number" data-number="85">85</strong>
+                  <span>Number of Awards</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+              <div class="block-18 text-center">
+                <div class="text">
+                  <div class="icon"><span class="flaticon-coffee-cup">😊</span></div>
+                  <strong class="number" data-number="10567">10,567</strong>
+                  <span>Happy Customer</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+              <div class="block-18 text-center">
+                <div class="text">
+                  <div class="icon"><span class="flaticon-coffee-cup">👨‍🍳</span></div>
+                  <strong class="number" data-number="900">900</strong>
+                  <span>Staff</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+  
+ <section class="ftco-section" style="background-image: url('assets/images/bg_2.jpg'); background-size: cover; background-position: center; position: relative;padding-bottom: 0;">
+  <div class="overlay" style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.9);"></div>
+  
+  <div class="container" style="position: relative; z-index: 2;">
+    
+    <div class="row justify-content-center mb-5 pb-3">
+      <div class="col-md-7 heading-section text-center">
+        <span class="subheading" style="color: #c49b63; font-family: 'Great Vibes', cursive; font-size: 30px; display: block; margin-bottom: 0;">Discover</span>
+        <h2 class="mb-4" style="color: #fff; text-transform: uppercase; letter-spacing: 2px;">Best Coffee Sellers</h2>
+        <p style="color: gray;">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+      </div>
+    </div>
+
+  <div class="row">
+      <div class="col-md-3" *ngFor="let product of bestSellers">
+        <div class="menu-entry">
+          
+          <a routerLink="/menu" class="img" [style.backgroundImage]="'url(' + product.image + ')'" 
+             style="display: block; height: 200px; background-size: cover; background-position: center;"></a>
+          
+          <div class="text text-center pt-4">
+            <h3 style="font-size: 18px;">
+  <a [routerLink]="['/menu']" [fragment]="product.name" 
+     style="color: #fff; text-decoration: none; cursor: pointer;">
+    {{ product.name }}
+  </a>
+</h3>
+            <p style="color: gray; font-size: 14px;">{{ product.description }}</p>
+            <p class="price" style="color: #c49b63; font-weight: 700; margin-bottom: 10px;">${{ product.price }}</p>
+            
+            <p>
+              <button (click)="addToCart(product)" class="btn btn-primary btn-outline-primary">Add to Cart</button>
+            </p>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</section>
+<section class="ftco-menu" style="background-color: #000000; background-size: cover; padding-bottom: 5em;">
+    <div class="container">
+        
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 heading-section text-center">
+                <span class="subheading" style="color: #c49b63; font-family: 'Great Vibes', cursive; font-size: 30px;">Discover</span>
+                <h2 class="mb-4 text-white">Our Products</h2>
+                <p class="text-white">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-8">
+                <div class="pricing-tabs text-center">
+                    <ul class="nav nav-pills justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link" [class.active]="activeTab === 'Main'" (click)="activeTab = 'Main'">Main Dish</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [class.active]="activeTab === 'Drinks'" (click)="activeTab = 'Drinks'">Drinks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [class.active]="activeTab === 'Desserts'" (click)="activeTab = 'Desserts'">Desserts</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            
+            <div class="col-md-4 text-center" *ngFor="let product of getFilteredProducts()">
+                <div class="menu-wrap">
+                    
+                    <a href="#" class="menu-img img mb-4" [style.backgroundImage]="'url(' + product.image + ')'"></a>
+                    
+                    <div class="text">
+                        <h3><a href="#">{{ product.name }}</a></h3>
+                        <p>{{ product.description }}</p>
+                        <p class="price"><span>${{ product.price }}</span></p>
+                        <p><a (click)="addToCart(product)" class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="img" style="background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); background-attachment: fixed;">
+  <div class="overlay" style="background: rgba(0,0,0,0.5);"></div>
+  <div class="container">
+    
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7 heading-section text-center pt-5">
+        <span class="subheading" style="color: #c49b63; font-family: 'Great Vibes', cursive; font-size: 30px;">Testimony</span>
+        <h2 class="mb-4 text-white">Customers Says</h2>
+        <p class="text-white">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+      </div>
+    </div>
+
+    <div class="row pb-5">
+      
+      <div class="col-md-3 d-flex">
+        <div class="testimony-wrap p-4 text-center">
+          <div class="user-img mb-4" style="background-image: url('https://randomuser.me/api/portraits/men/32.jpg'); border-radius: 50%; width: 80px; height: 80px; margin: 0 auto; background-size: cover;"></div>
+          <div class="text">
+            <p class="mb-4" style="font-style: italic; color: #ccc;">"Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life."</p>
+            <p class="name" style="font-weight: 700; font-size: 16px; color: #fff;">Louise Kelly</p>
+            <span class="position" style="font-size: 12px; color: #c49b63; display: block;">Illustrator Designer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 d-flex">
+        <div class="testimony-wrap p-4 text-center">
+          <div class="user-img mb-4" style="background-image: url('https://randomuser.me/api/portraits/women/44.jpg'); border-radius: 50%; width: 80px; height: 80px; margin: 0 auto; background-size: cover;"></div>
+          <div class="text">
+            <p class="mb-4" style="font-style: italic; color: #ccc;">"Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life."</p>
+            <p class="name" style="font-weight: 700; font-size: 16px; color: #fff;">Wendy Smith</p>
+            <span class="position" style="font-size: 12px; color: #c49b63; display: block;">Interior Designer</span>
+          </div>
+        </div>
+      </div>
+
+       <div class="col-md-3 d-flex">
+        <div class="testimony-wrap p-4 text-center">
+          <div class="user-img mb-4" style="background-image: url('https://randomuser.me/api/portraits/men/85.jpg'); border-radius: 50%; width: 80px; height: 80px; margin: 0 auto; background-size: cover;"></div>
+          <div class="text">
+            <p class="mb-4" style="font-style: italic; color: #ccc;">"Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life."</p>
+            <p class="name" style="font-weight: 700; font-size: 16px; color: #fff;">John Doe</p>
+            <span class="position" style="font-size: 12px; color: #c49b63; display: block;">Owner</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 d-flex">
+        <div class="testimony-wrap p-4 text-center">
+          <div class="user-img mb-4" style="background-image: url('https://randomuser.me/api/portraits/women/65.jpg'); border-radius: 50%; width: 80px; height: 80px; margin: 0 auto; background-size: cover;"></div>
+          <div class="text">
+            <p class="mb-4" style="font-style: italic; color: #ccc;">"Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life."</p>
+            <p class="name" style="font-weight: 700; font-size: 16px; color: #fff;">Sawyer Williams</p>
+            <span class="position" style="font-size: 12px; color: #c49b63; display: block;">Manager</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section class="ftco-section">
+    <div class="container">
+        
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-7 heading-section ftco-animate text-center">
+                <h2 class="mb-4">Recent From Blog</h2>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            </div>
+        </div>
+
+        <div class="row d-flex">
+            
+            <div class="col-md-4 d-flex ftco-animate" *ngFor="let post of recentPosts">
+                <div class="blog-entry align-self-stretch">
+                    
+                    <a href="blog-single.html" class="block-20" [style.backgroundImage]="'url(' + post.image + ')'">
+                    </a>
+                    
+                    <div class="text py-4 d-block">
+                        <div class="meta">
+                            <div><a href="#">{{ post.date }}</a></div>
+                            <div><a href="#">{{ post.author }}</a></div>
+                            <div><a href="#" class="meta-chat"><span class="icon-chat"></span> {{ post.comments }}</a></div>
+                        </div>
+                        <h3 class="heading mt-2"><a href="#">{{ post.title }}</a></h3>
+                        <p>{{ post.description }}</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="ftco-appointment" style="background-color: #000000;">
+    <div class="container-wrap">
+        <div class="row no-gutters d-md-flex align-items-stretch">
+
+            <div class="col-md-6 d-flex align-items-stretch">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.98731968482413!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes+Square!5e0!3m2!1sen!2ses!4v1510529780654" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0; min-height: 500px;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+
+            <div class="col-md-6 appointment ftco-animate d-flex align-items-center">
+                
+                <form (ngSubmit)="bookTable()" class="appointment-form w-100">
+                    
+                    <h3 class="mb-4">Book a Table</h3>
+
+                    <div class="d-md-flex mb-5">
+                        <div class="form-group">
+                            <input type="text" class="form-control" [(ngModel)]="model.name" name="name" placeholder="First Name">
+                        </div>
+                        <div class="form-group ml-md-4">
+                            <input type="text" class="form-control" [(ngModel)]="model.lastname" name="lastname" placeholder="Last Name">
+                        </div>
+                    </div>
+
+                    <div class="d-md-flex mb-5">
+                        <div class="form-group">
+                            <div class="input-wrap">
+                                <input type="date" class="form-control" [(ngModel)]="model.date" name="date" placeholder="Date">
+                            </div>
+                        </div>
+                        <div class="form-group ml-md-4">
+                            <div class="input-wrap">
+                                <input type="time" class="form-control" [(ngModel)]="model.time" name="time" placeholder="Time">
+                            </div>
+                        </div>
+                        <div class="form-group ml-md-4">
+                            <input type="text" class="form-control" [(ngModel)]="model.phone" name="phone" placeholder="Phone">
+                        </div>
+                    </div>
+
+                    <div class="d-md-flex mb-5">
+                        <div class="form-group">
+                            <textarea name="message" [(ngModel)]="model.message" cols="30" rows="3" class="form-control" placeholder="Message"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Appointment" class="btn btn-primary py-3 px-4">
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>

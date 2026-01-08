@@ -1,0 +1,54 @@
+/* GLOBAL VARIABLES */
+$primary: #c49b63; /* Coffee Gold */
+$dark: #000000;
+$white: #ffffff;
+
+/* GLOBAL RESET */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #000000; /* This makes the spaces between sections black */
+    color: rgba(255, 255, 255, 0.8);  /* Force light text */
+    font-size: 15px;
+    line-height: 1.8;
+    font-weight: 300;
+    margin: 0;
+}
+
+/* HEADINGS */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Josefin Sans', sans-serif;
+    color: $white;
+    font-weight: 700;
+}
+
+/* CURSIVE SUBHEADINGS */
+.subheading {
+    font-family: 'Great Vibes', cursive;
+    font-size: 30px;
+    color: $primary;
+    display: block;
+    margin-bottom: 20px;
+}
+
+/* BUTTONS */
+.btn {
+    border-radius: 0;
+    padding: 10px 20px;
+}
+.btn-primary {
+    background: $primary !important;
+    border: 1px solid $primary !important;
+    color: $white !important;
+    &:hover {
+        background: transparent !important;
+        color: $primary !important;
+    }
+}
+.btn-white {
+    border: 1px solid $white;
+    color: $white;
+    &:hover {
+        background: $white;
+        color: $dark;
+    }
+}

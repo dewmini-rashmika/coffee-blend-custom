@@ -1,0 +1,123 @@
+<section class="home-slider owl-carousel">
+    <div class="slider-item" style="background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row slider-text justify-content-center align-items-center">
+          <div class="col-md-7 col-sm-12 text-center ftco-animate">
+              <h1 class="mb-3 mt-5 bread">Menu</h1>
+              <p class="breadcrumbs">
+                  <span class="mr-2"><a routerLink="/">Home</a></span> 
+                  <span><a routerLink="/menu">Menu</a></span> 
+              </p>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="ftco-section">
+    <div class="container">
+        
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 heading-section text-center ftco-animate">
+                <span class="subheading">Discover</span>
+                <h2 class="mb-4">Our Products</h2>
+                <p style="color: white;">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            
+            <div class="col-md-6 mb-5 pb-3">
+                
+                <h3 id="section-starter" class="mb-5 heading-pricing ftco-animate">Starter</h3>
+                <div class="pricing-entry d-flex ftco-animate" *ngFor="let item of starters">
+                    <div class="img" 
+                         [style.backgroundImage]="'url(' + item.image + ')'"
+                         (click)="viewProduct(item)"
+                         style="cursor: pointer;">
+                    </div>
+                    
+                    <div class="desc pl-3">
+                        <div class="d-flex text align-items-center">
+                            <h3 (click)="viewProduct(item)" style="cursor: pointer;"><span>{{ item.name }}</span></h3>
+                            <span class="price">${{ item.price }}</span>
+                        </div>
+                        <div class="d-block">
+                            <p>{{ item.description }}</p>
+                            <button (click)="addToCart(item)" class="btn btn-sm btn-outline-primary mt-2">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="menu-divider ftco-animate">
+
+                <h3 id="section-desserts" class="mb-5 heading-pricing ftco-animate">Desserts</h3>
+                <div class="pricing-entry d-flex ftco-animate" *ngFor="let item of desserts">
+                    <div class="img" 
+                         [style.backgroundImage]="'url(' + item.image + ')'"
+                         (click)="viewProduct(item)"
+                         style="cursor: pointer;">
+                    </div>
+                    <div class="desc pl-3">
+                        <div class="d-flex text align-items-center">
+                            <h3 (click)="viewProduct(item)" style="cursor: pointer;"><span>{{ item.name }}</span></h3>
+                            <span class="price">${{ item.price }}</span>
+                        </div>
+                        <div class="d-block">
+                            <p>{{ item.description }}</p>
+                            <button (click)="addToCart(item)" class="btn btn-sm btn-outline-primary mt-2">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 mb-5 pb-3">
+                
+                <h3 id="section-main" class="mb-5 heading-pricing ftco-animate">Main Dish</h3>
+                <div class="pricing-entry d-flex ftco-animate" *ngFor="let item of mains">
+                    <div class="img" 
+                         [style.backgroundImage]="'url(' + item.image + ')'"
+                         (click)="viewProduct(item)"
+                         style="cursor: pointer;">
+                    </div>
+                    <div class="desc pl-3">
+                        <div class="d-flex text align-items-center">
+                            <h3 (click)="viewProduct(item)" style="cursor: pointer;"><span>{{ item.name }}</span></h3>
+                            <span class="price">${{ item.price }}</span>
+                        </div>
+                        <div class="d-block">
+                            <p>{{ item.description }}</p>
+                            <button (click)="addToCart(item)" class="btn btn-sm btn-outline-primary mt-2">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="menu-divider ftco-animate">
+
+                <h3 id="section-drinks" class="mb-5 heading-pricing ftco-animate">Drinks</h3>
+                <div class="pricing-entry d-flex ftco-animate" *ngFor="let item of drinks">
+                    <div class="img" 
+                         [style.backgroundImage]="'url(' + item.image + ')'"
+                         (click)="viewProduct(item)"
+                         style="cursor: pointer;">
+                    </div>
+                    <div class="desc pl-3">
+                        <div class="d-flex text align-items-center">
+                            <h3 (click)="viewProduct(item)" style="cursor: pointer;"><span>{{ item.name }}</span></h3>
+                            <span class="price">${{ item.price }}</span>
+                        </div>
+                        <div class="d-block">
+                            <p>{{ item.description }}</p>
+                            <button (click)="addToCart(item)" class="btn btn-sm btn-outline-primary mt-2">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
