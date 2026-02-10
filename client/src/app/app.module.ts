@@ -17,6 +17,7 @@ import { CartComponent } from './pages/shop/cart/cart.component';
 import { CheckoutComponent } from './pages/shop/checkout/checkout.component';
 import { FormsModule } from '@angular/forms'; 
 import { HttpClientModule } from '@angular/common/http';
+import { TrackOrderComponent } from './pages/track-order/track-order.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     ShopComponent,
     SingleProductComponent,
     CartComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    TrackOrderComponent
   ],
   imports: [
     BrowserModule,

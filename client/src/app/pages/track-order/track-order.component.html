@@ -1,0 +1,13 @@
+<section class="ftco-section" style="background: black; height: 100vh; color: white; padding-top: 150px; text-align: center;">
+    <h1>Order Status</h1>
+    <p>ID: {{ orderId }}</p>
+
+    <div *ngIf="status === 'pending'" style="margin-top: 50px;">
+        <h2 style="color: orange; font-size: 40px;">☕ Preparing...</h2>
+    </div>
+
+    <div *ngIf="status === 'ready'" style="margin-top: 50px;">
+        <h2 style="color: #2ecc71; font-size: 50px;">✅ READY!</h2>
+        <p>Please collect from counter.</p>
+    </div>
+</section>

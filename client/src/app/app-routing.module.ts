@@ -12,6 +12,7 @@ import { ShopComponent } from './pages/shop/shop.component';
 import { SingleProductComponent } from './pages/shop/single-product/single-product.component';
 import { CartComponent } from './pages/shop/cart/cart.component';
 import { CheckoutComponent } from './pages/shop/checkout/checkout.component';
+import { TrackOrderComponent} from './pages/track-order/track-order.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
 
   { path: 'contact', component: ContactComponent },
   // Wildcard (Redirects unknown URLs to Home)
+  { path: 'track-order/:id', component: TrackOrderComponent },
   { path: '**', redirectTo: '' }
 ];
 

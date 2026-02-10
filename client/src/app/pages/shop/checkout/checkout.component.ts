@@ -120,7 +120,9 @@ export class CheckoutComponent implements OnInit {
       }
     });
   }
-
+showStatusDialog = false;
+orderStatus = 'pending';
+currentOrderId = '';
   // --- 3. PLACE ORDER (SAVES EVERYTHING) ---
   placeOrder(form: NgForm) {
     if (form.invalid) {
@@ -138,15 +140,23 @@ export class CheckoutComponent implements OnInit {
 
     console.log('Sending Order:', orderEntry);
 
-    this.http.post(`${this.apiUrl}/order`, orderEntry).subscribe({
-      next: (res: any) => {
-        console.log('✅ Order Success:', res);
-        alert('Order Placed Successfully! Order ID: ' + res.orderId);
-      },
-      error: (err) => {
-        console.error('❌ Order Error:', err);
-        alert('Failed to place order. Check server console.');
+    this.http.post('http://192.168.1.101:3000/api/order', orderEntry).subscribe({
+      
+     next: (res: any) => {
+        this.currentOrderId = res.orderId;
+        this.showStatusDialog = true; // Open the dialog box [cite: 1]
+        this.cartService.removeAllCart();
+        this.startPollingStatus(res.orderId);
       }
     });
+}
+
+startPollingStatus(id: string) {
+    const interval = setInterval(() => {
+        this.http.get(`http://192.168.1.101:3000/api/order/${id}`).subscribe((res: any) => {
+            this.orderStatus = res.status;
+            if (res.status === 'ready') clearInterval(interval); // [cite: 2]
+        });
+    }, 2000);
   }
 }

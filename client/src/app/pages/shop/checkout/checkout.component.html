@@ -243,3 +243,17 @@
         </div>
     </div>
 </section>
+<div class="status-overlay" *ngIf="showStatusDialog">
+    <div class="status-dialog">
+        <h3>Order Status</h3>
+        <hr>
+        <p><strong>Order ID:</strong> {{ currentOrderId }}</p>
+        
+        <div class="status-animation">
+            <h2 *ngIf="orderStatus === 'pending'" class="text-warning">☕ Preparing Your Coffee...</h2>
+            <h2 *ngIf="orderStatus === 'ready'" class="text-success">✅ READY! Pick up at counter</h2>
+        </div>
+
+        <button class="btn btn-primary mt-3" *ngIf="orderStatus === 'ready'" (click)="showStatusDialog = false">Close</button>
+    </div>
+</div>

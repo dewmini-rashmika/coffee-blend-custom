@@ -13,9 +13,9 @@ const AccountInfoSchema = new mongoose.Schema({
         phone: String,
         email: String,
         createAccount: Boolean,
-        shipDifferent: Boolean
+        shipDifferent: Boolean,
+        
     },
-
     // 2. SHIPPING SNAPSHOT
     shipping: {
         firstname: String,
@@ -41,7 +41,9 @@ const AccountInfoSchema = new mongoose.Schema({
     orderDate: {
         type: Date,
         default: Date.now
-    }
+    },
+    status: { type: String, default: 'pending' } // 'pending' -> 'ready'
 });
+
 
 module.exports = mongoose.model('AccountInfo', AccountInfoSchema);

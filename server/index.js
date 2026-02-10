@@ -107,11 +107,17 @@ app.post('/api/order', async (req, res) => {
     try {
         console.log("📦 Received Full Order:", req.body);
         
-        // Mongoose automatically maps req.body.items to the schema
-        const newOrder = new AccountInfo(req.body);
+        // --- IOT UPDATE: FORCE STATUS 'PENDING' ---
+        // We spread (...req.body) and override 'status' to ensure it is 'pending'
+        const orderData = { 
+            ...req.body, 
+            status: 'pending' 
+        };
+
+        const newOrder = new AccountInfo(orderData);
         
         await newOrder.save();
-        console.log("✅ Order Saved");
+        console.log("✅ Order Saved with Status: PENDING");
         res.status(201).json({ message: "Order Placed!", orderId: newOrder._id });
     } catch (error) {
         console.error("❌ Order Error:", error);
@@ -130,6 +136,76 @@ app.post('/api/reservation', async (req, res) => {
         res.status(201).json({ message: "Reservation Saved!" });
     } catch (error) {
         console.error("❌ Reservation Error:", error);
+        res.status(500).json({ error: "Server Error" });
+    }
+});
+// ==========================================
+// ROUTE 6: IOT - CHECK PENDING ORDERS (Hardware Polling)
+// ==========================================
+app.get('/api/iot/pending', async (req, res) => {
+    try {
+        // Find the oldest order that is still 'pending'
+        const order = await AccountInfo.findOne({ status: 'pending' }).sort({ orderDate: 1 });
+        
+        if (order) {
+            // --- SAFETY CHECK START ---
+            // If the order exists but has NO items (Empty array), handle it safely
+            let itemName = "Mystery Item";
+            
+            if (order.items && order.items.length > 0) {
+                itemName = order.items[0].name;
+            } else {
+                console.log(`⚠️ Warning: Order ${order._id} has no items!`);
+            }
+            // --- SAFETY CHECK END ---
+
+            res.json({
+                found: true,
+                id: order._id,
+                customer: order.billing.firstname || "Customer", 
+                item: itemName 
+            });
+        } else {
+            res.json({ found: false });
+        }
+    } catch (error) {
+        console.error("❌ IoT Pending Error:", error);
+        res.status(500).json({ error: "Server Error" });
+    }
+});
+
+
+// ==========================================
+// ROUTE 7: IOT - MARK ORDER READY (Button Press)
+// ==========================================
+app.post('/api/iot/ready', async (req, res) => {
+    try {
+        const { id } = req.body;
+        // Find order by ID and update status to 'ready'
+        await AccountInfo.findByIdAndUpdate(id, { status: 'ready' });
+        
+        console.log(`✅ Order ${id} marked as READY by Barista`);
+        res.json({ success: true });
+    } catch (error) {
+        console.error("❌ IoT Ready Error:", error);
+        res.status(500).json({ error: "Server Error" });
+    }
+});
+
+
+// ==========================================
+// ROUTE 8: TRACKING - CHECK STATUS (Web Tracking Page)
+// ==========================================
+app.get('/api/order/:id', async (req, res) => {
+    try {
+        const order = await AccountInfo.findById(req.params.id);
+        if (order) {
+            res.json({ status: order.status });
+        } else {
+            res.status(404).json({ message: "Order not found" });
+        }
+    } catch (error) {
+        console.error("❌ Tracking Error:", error);
         res.status(500).json({ error: "Server Error" });
     }
 });
