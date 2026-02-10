@@ -7,9 +7,16 @@ import { BehaviorSubject } from 'rxjs';
 export class CartService {
   public cartItemList: any = [];
   public productList = new BehaviorSubject<any>([]);
+  private appliedCoupon: any = null; // Store database coupon info
 
   constructor() { 
     this.loadCart();
+  }
+
+  // Method to set coupon data and trigger recalculation
+  applyCoupon(couponData: any) {
+    this.appliedCoupon = couponData;
+    this.pushUpdates(); 
   }
 
   getProducts() {
@@ -20,19 +27,14 @@ export class CartService {
     return this.cartItemList;
   }
 
-  // --- UPDATED: Respects the quantity passed from Single Product Page ---
   addToCart(product: any) {
     const existingProduct = this.cartItemList.find((item: any) => item.name === product.name);
-    
-    // Check if the incoming product has a specific quantity (from Single Product page), otherwise default to 1
     const qtyToAdd = product.quantity || 1;
 
     if (existingProduct) {
-      // Add the specific quantity (not just +1)
       existingProduct.quantity += qtyToAdd;
       existingProduct.total = existingProduct.quantity * existingProduct.price;
     } else {
-      // Add new item with specific quantity
       const newProduct = { 
           ...product, 
           quantity: qtyToAdd, 
@@ -40,7 +42,6 @@ export class CartService {
       };
       this.cartItemList.push(newProduct);
     }
-    
     this.pushUpdates();
   }
 
@@ -67,19 +68,32 @@ export class CartService {
     }
   }
 
-  // --- Calculate All Totals ---
   getBill() {
     let subTotal = 0;
     this.cartItemList.map((a: any) => {
       subTotal += (a.price * a.quantity);
     });
 
-    // LOGIC: Delivery is $5, but free if order is over $50
     let delivery = subTotal > 50 ? 0 : 5;
     if(subTotal === 0) delivery = 0; 
 
-    // LOGIC: Discount is 10% if order is over $100
-    let discount = subTotal > 100 ? (subTotal * 0.10) : 0;
+    // --- CALCULATE DISCOUNTS ---
+    let discount = 0;
+    
+    // 1. Existing automatic 10% discount for orders over $100
+    if (subTotal > 100) discount = (subTotal * 0.10);
+
+    // 2. MODIFIED: Dynamic Database Coupon Logic
+    if (this.appliedCoupon) {
+      // Apply percentage-based discount from DB
+      if (this.appliedCoupon.percent > 0) {
+        discount += (subTotal * (this.appliedCoupon.percent / 100));
+      }
+      // Apply flat-rate discount from DB
+      if (this.appliedCoupon.flat > 0) {
+        discount += this.appliedCoupon.flat;
+      }
+    }
 
     let grandTotal = subTotal + delivery - discount;
 
@@ -87,7 +101,7 @@ export class CartService {
         subTotal: subTotal,
         delivery: delivery,
         discount: discount,
-        grandTotal: grandTotal
+        grandTotal: grandTotal < 0 ? 0 : grandTotal 
     };
   }
 

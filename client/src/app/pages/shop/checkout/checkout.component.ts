@@ -146,7 +146,12 @@ currentOrderId = '';
         this.currentOrderId = res.orderId;
         this.showStatusDialog = true; // Open the dialog box [cite: 1]
         this.cartService.removeAllCart();
+        form.reset();
         this.startPollingStatus(res.orderId);
+      },
+      error: (err) => {
+        console.error(err);
+        alert('Failed to place order.');
       }
     });
 }

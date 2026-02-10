@@ -142,34 +142,21 @@ app.post('/api/reservation', async (req, res) => {
 // ==========================================
 // ROUTE 6: IOT - CHECK PENDING ORDERS (Hardware Polling)
 // ==========================================
+// This is Node.js code - keep it in your backend folder! [cite: 18]
 app.get('/api/iot/pending', async (req, res) => {
     try {
-        // Find the oldest order that is still 'pending'
         const order = await AccountInfo.findOne({ status: 'pending' }).sort({ orderDate: 1 });
-        
         if (order) {
-            // --- SAFETY CHECK START ---
-            // If the order exists but has NO items (Empty array), handle it safely
-            let itemName = "Mystery Item";
-            
-            if (order.items && order.items.length > 0) {
-                itemName = order.items[0].name;
-            } else {
-                console.log(`⚠️ Warning: Order ${order._id} has no items!`);
-            }
-            // --- SAFETY CHECK END ---
-
             res.json({
                 found: true,
                 id: order._id,
-                customer: order.billing.firstname || "Customer", 
-                item: itemName 
+                customer: order.billing.firstname || "Customer",
+                item: order.items[0]?.name || "Coffee"
             });
         } else {
             res.json({ found: false });
         }
     } catch (error) {
-        console.error("❌ IoT Pending Error:", error);
         res.status(500).json({ error: "Server Error" });
     }
 });
@@ -209,6 +196,38 @@ app.get('/api/order/:id', async (req, res) => {
         res.status(500).json({ error: "Server Error" });
     }
 });
+// ... existing imports
+const Coupon = require('./models/Coupon'); 
+
+// ==========================================
+// ROUTE: VALIDATE COUPON (MODIFIED)
+// ==========================================
+// Add these to index.js at the bottom before app.listen
+
+app.post('/api/validate-coupon', async (req, res) => {
+    try {
+        const codeInput = req.body.code.trim().toUpperCase();
+        console.log("Validating Code:", codeInput);
+
+        const coupon = await Coupon.findOne({ code: codeInput, isActive: true });
+        
+        if (coupon) {
+            console.log("✅ Coupon Found:", coupon);
+            res.json({ 
+                valid: true, 
+                percent: coupon.percentDiscount || 0, 
+                flat: coupon.flatDiscount || 0 
+            });
+        } else {
+            console.log("❌ Coupon Not Found");
+            res.status(404).json({ valid: false, message: "Invalid or expired coupon" });
+        }
+    } catch (error) {
+        console.error("❌ Coupon Error:", error);
+        res.status(500).json({ error: "Server Error" });
+    }
+});
+// ... rest of index.js
 
 const PORT = 3000;
 app.listen(PORT, () => {
