@@ -43,10 +43,8 @@
                                 <div class="select-wrap">
                                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                                     <select name="country" class="form-control" [(ngModel)]="model.country" required>
-                                        <option value="France">France</option>
-                                        <option value="Japan">Japan</option>
-                                        <option value="USA">USA</option>
-                                    </select>
+    <option *ngFor="let country of allCountries" [value]="country">{{ country }}</option>
+</select>
                                 </div>
                             </div>
                         </div>

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class OrderService {
-  private apiUrl = 'http://192.168.1.101:3000/api'; 
+  private apiUrl = 'http://192.168.1.102:3000/api'; 
 
   constructor(private http: HttpClient) { }
 

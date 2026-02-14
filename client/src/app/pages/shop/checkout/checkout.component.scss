@@ -289,3 +289,17 @@
     background: #1a1a1a; padding: 40px; border: 2px solid #c49b63;
     text-align: center; color: white; border-radius: 10px; width: 400px;
 }
+/* checkout.component.scss */
+
+.select-wrap {
+    select.form-control {
+        background: #0d0d0d !important; /* Dark Background */
+        color: #fff !important;         /* White Font */
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        
+        option {
+            background: #0d0d0d; /* Background of the actual list */
+            color: #fff;         /* Font of the list items */
+        }
+    }
+}

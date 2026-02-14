@@ -43,7 +43,7 @@ applyCoupon() {
     return;
   }
 
-  const url = 'http://192.168.1.101:3000/api/validate-coupon';
+  const url = 'http://192.168.1.102:3000/api/validate-coupon';
   this.http.post(url, { code: codeToSend }).subscribe({
     next: (res: any) => {
       console.log("Server Response:", res);

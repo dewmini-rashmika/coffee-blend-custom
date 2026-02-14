@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CartService } from '../../services/cart.service'; // Adjust the path to your actual service file
+import { Component, OnInit, HostListener, ElementRef } from '@angular/core';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +14,11 @@ export class NavbarComponent implements OnInit {
   // Cart count variable
   public totalItem: number = 0;
 
-  constructor(private cartService: CartService) {}
+  // Inject ElementRef to detect clicks on this specific component
+  constructor(
+    private cartService: CartService,
+    private eRef: ElementRef 
+  ) {}
 
   ngOnInit(): void {
     // Subscribe to the cart service observable
@@ -22,6 +26,15 @@ export class NavbarComponent implements OnInit {
       // Calculate total quantity across all products
       this.totalItem = res.reduce((acc: number, item: any) => acc + item.quantity, 0);
     });
+  }
+
+  // --- NEW: Detect clicks outside of the navbar ---
+  @HostListener('document:click', ['$event'])
+  clickout(event: any) {
+    // If the click happened OUTSIDE the navbar, close all menus
+    if (!this.eRef.nativeElement.contains(event.target)) {
+      this.closeAll();
+    }
   }
 
   // Toggle for Mobile Hamburger

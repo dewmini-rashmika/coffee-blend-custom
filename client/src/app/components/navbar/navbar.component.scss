@@ -55,3 +55,20 @@
     display: block !important;
 }
 /* ... rest of your existing cart styles */
+/* navbar.component.scss */
+
+.dropdown-menu {
+    background-color: #212529 !important; /* Matches ftco-bg-dark */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    .dropdown-item {
+        color: #fff !important; /* White Font */
+        font-size: 14px;
+        padding: 10px 20px;
+
+        &:hover {
+            background-color: #c49b63 !important; /* Gold hover */
+            color: #000 !important; /* Black text on hover */
+        }
+    }
+}
