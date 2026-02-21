@@ -32,7 +32,7 @@ export class CheckoutComponent implements OnInit {
   // MOCK MENU DATA
   menuData = { 'Starter': [1, 2, 3, 4], 'Main Dish': [1, 2, 3, 4], 'Desserts': [1, 2, 3], 'Drinks': [1, 2, 3] };
 
-  private apiUrl = 'http://192.168.1.102:3000/api';
+  private apiUrl = 'http://192.168.1.101:3000/api';
 
 // checkout.component.ts
 allCountries: string[] = [
@@ -172,7 +172,7 @@ currentOrderId = '';
 
     console.log('Sending Order:', orderEntry);
 
-    this.http.post('http://192.168.1.102:3000/api/order', orderEntry).subscribe({
+    this.http.post('http://192.168.1.101:3000/api/order', orderEntry).subscribe({
       
      next: (res: any) => {
         this.currentOrderId = res.orderId;
@@ -190,7 +190,7 @@ currentOrderId = '';
 
 startPollingStatus(id: string) {
     const interval = setInterval(() => {
-        this.http.get(`http://192.168.1.102:3000/api/order/${id}`).subscribe((res: any) => {
+        this.http.get(`http://192.168.1.101:3000/api/order/${id}`).subscribe((res: any) => {
             this.orderStatus = res.status;
             if (res.status === 'ready') clearInterval(interval); // [cite: 2]
         });

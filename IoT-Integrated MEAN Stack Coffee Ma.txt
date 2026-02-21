@@ -1,0 +1,68 @@
+IoT-Integrated MEAN Stack Coffee Management System
+Full-Stack Architecture & State Management: Developed a responsive e-commerce platform using the MEAN stack, utilizing RxJS BehaviorSubjects for real-time synchronization of cart data and UI components across the application.
+
+IoT & Hardware Integration: Engineered a synchronized hardware dispatcher using an ESP8266, programmed in C++ to handle JSON parsing and HTTP polling, providing live order visualization via an I2C LCD and audible Buzzer alerts.
+
+End-to-End Lifecycle Automation: Implemented a bi-directional feedback loop where physical button-presses on the microcontroller update MongoDB via REST APIs, automating the order transition from "Pending" to "Ready" for instant customer tracking.
+
+
+
+*******IoT-Integrated MEAN Stack Coffee Management System
+
+Full-Stack & State Mgmt: Built a MEAN stack e-commerce site using RxJS BehaviorSubjects for real-time UI/Cart synchronization.
+
+IoT Hardware Integration: Programmed an ESP8266 (C++) to handle JSON parsing and HTTP polling for live order alerts via LCD and Buzzer.
+
+Lifecycle Automation: Created a REST API feedback loop where physical button-presses update MongoDB order status for instant customer tracking.
+
+Technical Skills 
+Web: MongoDB, Express, Angular, Node.js, RxJS, REST APIs.
+
+IoT: ESP8266, C++, Arduino IDE, I2C Communication, Hardware Integration.
+
+
+********************
+
+🛠️ Technical Stack
+Backend: Java, Spring Boot (REST API), Spring Web.
+
+Frontend: JavaScript (ES6+), HTML5, CSS3, Persistence via LocalStorage.
+
+Database: MySQL (Relational Database Management), JDBC for persistence.
+
+Algorithms: A* (A-Star) Pathfinding, Manhattan Heuristic, Dynamic Re-routing.
+
+Tools: Maven, Swing (for legacy/headless support).
+
+🚀 Key Features & Functionality
+Dynamic A Pathfinding:* Implemented a real-time A* algorithm that calculates the most efficient route from robot coordinates to target inventory nodes.
+
+Autonomous Obstacle Avoidance: Developed a "Dynamic Re-routing" engine where robots recalculate paths at every step to instantly react to new obstacles placed in the environment.
+
+
+
+**********
+Autonomous Warehouse Fleet Management
+Stack: Java, Spring Boot, MySQL, REST API, JavaScript, A* Algorithm
+
+Dynamic Navigation: Developed a real-time A* pathfinding engine that recalculates robot trajectories at every grid cell to instantly avoid new obstacles.
+
+Full-Stack Integration: Engineered a RESTful API with Spring Boot to synchronize fleet coordinates between a MySQL database and a responsive JavaScript dashboard.
+
+System Persistence: Implemented localStorage and @PostConstruct database hooks to ensure robot positions and environment states remain persistent across sessions.
+
+Optimistic UI: Optimized user interaction by separating UI state from network latency, allowing for lag-free obstacle creation and immediate fleet response.
+
+
+**************
+IoT-Integrated MEAN Stack Coffee Management System
+Stack: MongoDB, Express.js, Angular, Node.js, ESP8266 (C++), REST APIs, I2C Communication.
+
+
+Full-Stack & State Management: Developed a responsive e-commerce platform using the MEAN stack, utilizing RxJS BehaviorSubjects for real-time synchronization of cart data and UI components.
+
+
+IoT Hardware Integration: Engineered a synchronized hardware dispatcher using an ESP8266, programmed to handle JSON parsing and HTTP polling for live order visualization via an I2C LCD and Buzzer alerts.
+
+
+End-to-End Lifecycle Automation: Implemented a bi-directional feedback loop where physical button-presses on the microcontroller update MongoDB via REST APIs, automating order transitions from "Pending" to "Ready"
